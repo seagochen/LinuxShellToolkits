@@ -17,3 +17,6 @@ rm ~/miniconda3/miniconda.sh
 
 # Add Miniconda to the PATH
 ~/miniconda3/bin/conda init bash
+
+# Source the .bashrc file
+source ~/.bashrc

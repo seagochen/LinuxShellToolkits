@@ -17,6 +17,8 @@ def detect_non_english_files(folder_path):
     non_english_files = []
     total_files = count_files(folder_path)
     processed_files = 0
+
+    # Walk through all files in the folder
     for root, dirs, files in os.walk(folder_path):
         for file in files:
             file_path = os.path.join(root, file)
@@ -33,7 +35,11 @@ def detect_non_english_files(folder_path):
                     except UnicodeDecodeError:
                         pass
             processed_files += 1
-            print(f"Processed {processed_files}/{total_files} files")
+
+            # Print the progress every 100 files
+            if processed_files % 100 == 0:
+                print(f"Processed {processed_files}/{total_files} files")
+
     return non_english_files
 
 
