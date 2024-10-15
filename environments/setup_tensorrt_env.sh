@@ -10,4 +10,3 @@ echo "$TENSORRT_PATH/lib" | sudo tee /etc/ld.so.conf.d/tensorrt.conf
 
 # Source the .bashrc file
 source ~/.bashrc
-
