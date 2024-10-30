@@ -11,4 +11,4 @@ sudo apt-get install bc
 
 # Use Pip to install the Python packages required by the scripts.
 # moviepy, PIL, chardet
-pip3 install moviepy pillow chardet
+pip3 install moviepy pillow chardet -i https://mirrors.aliyun.com/pypi/simple/
