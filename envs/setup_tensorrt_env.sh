@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Add "# TensorRT Environment Variables" to the .bashrc file
+echo "# TensorRT Environment Variables" >> ~/.bashrc
+
 # Append TensorRT environment variables to the .bashrc file
 TENSORRT_PATH=/opt/tensorrt
 echo "export PATH=\$PATH:$TENSORRT_PATH/bin" >> ~/.bashrc

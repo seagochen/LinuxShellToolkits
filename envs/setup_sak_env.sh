@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Download the SAK repository from Github
+git clone https://github.com/seagochen/sak.git 
+
+# Move the SAK repository to the /opt directory
+sudo mv sak /opt
+
 # Append SAK environment variables to the .bashrc file
 SAK_PATH=/opt/sak
 echo "export PATH=\$PATH:$SAK_PATH/bin" >> ~/.bashrc
