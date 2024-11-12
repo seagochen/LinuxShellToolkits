@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Check if the script is running as root
-if [ "$EUID" -ne 0 ]; then 
-  echo "このスクリプトを実行するには root 権限が必要です。"
-  exit 1
-fi
-
 # Create a folder in /opt
 sudo mkdir -p /opt/sak
 
