@@ -1,17 +1,23 @@
 #!/bin/bash
 
-# Download the SAK repository from Github
-git clone https://github.com/seagochen/sak.git 
+# Check if the script is running as root
+if [ "$EUID" -ne 0 ]; then 
+  echo "このスクリプトを実行するには root 権限が必要です。"
+  exit 1
+fi
 
-# Move the SAK repository to the /opt directory
-sudo mv sak /opt
+# Create a folder in /opt
+sudo mkdir -p /opt/sak
+
+# Copy the contents in this project into /opt/sak
+sudo cp -r . /opt/sak
 
 # Append SAK environment variables to the .bashrc file
 SAK_PATH=/opt/sak
+echo ".bashrcにSAKのことを書き込み中..."
+echo "# SAK Environment" >> ~/.bashrc
 echo "export PATH=\$PATH:$SAK_PATH/bin" >> ~/.bashrc
-
-# Call the install_packages.sh script to set up the SAK environment
-$SAK_PATH/environments/install_packages.sh
+echo "完了しました。"
 
 # Source the .bashrc file
 source ~/.bashrc
