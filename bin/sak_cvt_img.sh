@@ -36,7 +36,7 @@ if [ -z "$filepath" ] || [ -z "$src" ] || [ -z "$dst" ]; then
 fi
 
 # 设置 Python 脚本路径
-script_dir="/opt/sak/pybin"
+script_dir="/opt/sak/pytools"
 
 # 根据源格式和目标格式选择对应的 Python 脚本
 case "$src-$dst" in

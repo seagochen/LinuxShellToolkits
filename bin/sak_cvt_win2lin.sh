@@ -14,11 +14,11 @@ if [ ! -f "$TARGET_FILE" ]; then
   exit 1
 fi
 
-# Pythonスクリプト(/opt/sak/pybin/dos2unix.py)を使って、Windowsの CRLF 改行を Linux の LF に変換
-if [ ! -f /opt/sak/pybin/dos2unix.py ]; then
-  echo "エラー: /opt/sak/pybin/dos2unix.py が見つかりません。"
+# Pythonスクリプト(/opt/sak/pytools/dos2unix.py)を使って、Windowsの CRLF 改行を Linux の LF に変換
+if [ ! -f /opt/sak/pytools/dos2unix.py ]; then
+  echo "エラー: /opt/sak/pytools/dos2unix.py が見つかりません。"
   exit 1
 else
   echo "$TARGET_FILE を Windows 形式 (CRLF) に変換しています..."
-  python3 /opt/sak/pybin/dos2unix.py "$TARGET_FILE"
+  python3 /opt/sak/pytools/dos2unix.py "$TARGET_FILE"
 fi
