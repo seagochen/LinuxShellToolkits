@@ -1,0 +1,26 @@
+{
+    "models": [
+        {
+            "name": "yolov8n",
+            "onnx_path": "/path/to/yolov8n.onnx",
+            "engine_path": "/path/to/save/yolov8n.engine",
+            "precision": "fp16",
+            "batch_size": 1,
+            "min_batch": 1,
+            "max_batch": 1,
+            "opt_batch": 1,
+            "dynamic_shapes": false,
+            "enable_preview": false,
+            "verbose": true,
+            "custom_args": "--ignoreLayers=layer1,layer2"
+        },
+        {
+            "name": "model2",
+            "onnx_path": "/path/to/model2.onnx",
+            "engine_path": "/path/to/save/model2.engine",
+            "precision": "fp32",
+            "batch_size": 8,
+            "verbose": false
+        }
+    ]
+}
