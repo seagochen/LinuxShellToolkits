@@ -1,0 +1,19 @@
+{
+    "models": [
+      {
+        "name": "yolov8n",
+        "onnx_path": "/opt/models/yolov8n.onnx",
+        "engine_path": "/opt/models/yolov8n.engine",
+        "precision": "fp16",
+        "min_shapes": "images:1x3x640x640",
+        "opt_shapes": "images:2x3x640x640",
+        "max_shapes": "images:4x3x640x640",
+        "input_tensor_name": "images",
+        "input_dimensions": [1, 3, 640, 640],
+        "output_tensor_names": "output0",
+        "output_dimensions": [1, 84, 8400],
+        "verbose": true
+      }
+    ]
+  }
+  
