@@ -14,9 +14,9 @@ NC='\033[0m' # No Color
 
 # 定义文件URL和名称
 CUDA_PIN_URL="https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin"
-CUDA_DEB_URL="https://developer.download.nvidia.com/compute/cuda/12.6.3/local_installers/cuda-repo-ubuntu2204-12-6-local_12.6.3-560.35.05-1_amd64.deb"
+CUDA_DEB_URL="https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda-repo-ubuntu2204-12-4-local_12.4.1-550.54.15-1_amd64.deb"
 CUDA_PIN_FILE="cuda-ubuntu2204.pin"
-CUDA_DEB_FILE="cuda-repo-ubuntu2204-12-6-local_12.6.3-560.35.05-1_amd64.deb"
+CUDA_DEB_FILE="cuda-repo-ubuntu2204-12-4-local_12.4.1-550.54.15-1_amd64.deb"
 
 # 函数：打印带颜色的消息
 print_message() {
@@ -82,7 +82,7 @@ clean_nvidia_cuda() {
 }
 
 # 开始安装过程
-print_message "$GREEN" "开始安装 CUDA 12.6.3 ..."
+print_message "$GREEN" "开始安装 CUDA 12.4.1 ..."
 
 # 0. 清理旧的安装
 print_message "$GREEN" "Step 0: 清理旧的NVIDIA和CUDA安装..."
@@ -102,7 +102,7 @@ check_status "安装 CUDA 仓库包失败"
 
 # 3. 拷贝 keyring
 print_message "$GREEN" "Step 3: 配置 CUDA 仓库密钥..."
-cp /var/cuda-repo-ubuntu2204-12-6-local/cuda-*-keyring.gpg /usr/share/keyrings/
+cp /var/cuda-repo-ubuntu2204-12-4-local/cuda-*-keyring.gpg /usr/share/keyrings/
 check_status "复制 keyring 失败"
 
 # 4. 更新包列表
@@ -111,15 +111,15 @@ apt-get update
 check_status "更新包列表失败"
 
 # 5. 安装 CUDA
-print_message "$GREEN" "Step 5: 安装 CUDA Toolkit 12.6..."
-apt-get -y install cuda-toolkit-12-6
+print_message "$GREEN" "Step 5: 安装 CUDA Toolkit 12.4..."
+apt-get -y install cuda-toolkit-12-4
 check_status "安装 CUDA Toolkit 失败"
 
 # 6. 设置环境变量
 print_message "$GREEN" "Step 6: 配置环境变量..."
 BASHRC="/etc/bash.bashrc"
-grep -qxF 'export PATH=/usr/local/cuda-12.6/bin:$PATH' $BASHRC || echo 'export PATH=/usr/local/cuda-12.6/bin:$PATH' >> $BASHRC
-grep -qxF 'export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH' $BASHRC || echo 'export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH' >> $BASHRC
+grep -qxF 'export PATH=/usr/local/cuda-12.4/bin:$PATH' $BASHRC || echo 'export PATH=/usr/local/cuda-12.4/bin:$PATH' >> $BASHRC
+grep -qxF 'export LD_LIBRARY_PATH=/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH' $BASHRC || echo 'export LD_LIBRARY_PATH=/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH' >> $BASHRC
 
 # 7. 清理下载的文件
 print_message "$GREEN" "Step 7: 清理安装文件..."
@@ -127,8 +127,8 @@ rm -f "$CUDA_DEB_FILE"
 
 # 8. 验证安装
 print_message "$GREEN" "Step 8: 验证安装..."
-if [ -f "/usr/local/cuda-12.6/bin/nvcc" ]; then
-    print_message "$GREEN" "CUDA 12.6.3 安装成功！"
+if [ -f "/usr/local/cuda-12.4/bin/nvcc" ]; then
+    print_message "$GREEN" "CUDA 12.4.1 安装成功！"
 else
     print_message "$RED" "警告：CUDA 安装可能不完整，请检查安装日志"
 fi
