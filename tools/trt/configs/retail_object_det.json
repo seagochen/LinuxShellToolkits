@@ -1,0 +1,22 @@
+{
+    "models": [
+      {
+        "name": "retail-object-detection",
+        "onnx_path": "/opt/models/retail_object_detection_binary_v2.2.2.3.onnx",
+        "engine_path": "/opt/models/retail_object_detection.engine",
+        "precision": "fp16",
+        "min_shapes": "inputs:1x3x540x960",
+        "opt_shapes": "inputs:2x3x540x960",
+        "max_shapes": "inputs:4x3x540x960",
+        "input_tensor_name": "inputs",
+        "input_dimensions": [1, 3, 540, 960],
+        "output_tensor_names": ["pred_logits", "pred_boxes"],
+        "output_dimensions": [
+          [1, -1, -1], 
+          [1, -1, -1] 
+        ],
+        "verbose": true
+      }
+    ]
+  }
+  
