@@ -33,11 +33,15 @@ show_menu() {
 
 # メイン処理
 main() {
-    while true; do
-        show_menu
-        read -p "選択 (1-2): " choice
+    show_menu
+    read -p "選択 (1-2): " choice
 
-        case $choice in
-            1) control_fan "on" ;;
-            2) control_fan "off" ;;
-            *) echo "無
+    case $choice in
+        1) control_fan "on" ;;
+        2) control_fan "off" ;;
+        *) echo "無効な選択です。再度選択してください。" ;;
+    esac
+}
+
+# 実行
+main

@@ -80,20 +80,9 @@ show_menu() {
 # メイン処理
 main() {
     setup_config
-    while true; do
-        show_menu
-        read -p "選択 (0-3): " choice
-        set_clocks "$choice"
-
-        # 再起動確認
-        read -p "変更を有効にするために再起動しますか？ (y/n): " reboot_choice
-        case "$reboot_choice" in
-            y|Y) echo "システムを再起動します..." && reboot ;;
-            n|N) echo "再起動をキャンセルしました。" ;;
-            *)   echo "無効な入力です。再起動をキャンセルしました。" ;;
-        esac
-        break
-    done
+    show_menu
+    read -p "選択 (0-3): " choice
+    set_clocks "$choice"
 }
 
 # 実行
