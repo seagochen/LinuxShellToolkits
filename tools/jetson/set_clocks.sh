@@ -7,6 +7,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 CONFIG_FILE="/root/.jetsonclocks_conf.txt"
+BACKUP_FILE="/root/jetson_clocks_backup.txt"
 
 # 設定ファイルの存在を確認し、なければ作成
 create_config() {
@@ -21,9 +22,25 @@ create_config() {
     fi
 }
 
+# 既存のバックアップがない場合にのみ作成
+backup_config() {
+    if [ ! -f "$BACKUP_FILE" ]; then
+        echo "現在のクロック設定をバックアップします..."
+        cp "$CONFIG_FILE" "$BACKUP_FILE"
+        chmod 444 "$BACKUP_FILE"  # 設定ファイルを読み取り専用にする
+        echo "バックアップが作成されました: $BACKUP_FILE"
+    else
+        echo "バックアップファイルは既に存在します: $BACKUP_FILE"
+    fi
+}
+
+# 設定ファイルがない場合、新規作成
 if [ ! -f "$CONFIG_FILE" ]; then
     create_config
 fi
+
+# 初回実行時にバックアップ
+backup_config
 
 # クラック設定の関数
 set_clocks() {
