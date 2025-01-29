@@ -68,42 +68,13 @@ set_clocks() {
     echo "クロック設定が完了しました。"
 }
 
-# ファン制御
-control_fan() {
-    case $1 in
-        on)
-            echo "ファンを強制起動します..."
-            jetson_clocks --fan && echo "ファンを強制起動しました。" || echo "ファンの起動に失敗しました。"
-            ;;
-        off)
-            echo "ファンを停止します..."
-            jetson_clocks --restore && echo "ファンを停止しました。" || echo "ファンの停止に失敗しました。"
-            ;;
-        *)  
-            echo "無効なファン制御オプションです。"
-            ;;
-    esac
-}
-
 # メニュー表示
 show_menu() {
-    echo "Jetson Nano クロック・ファン設定:"
+    echo "Jetson Nano クロック設定:"
     echo "1. 自動設定（MAXN: 最大, MODE_10W: 省電力）"
     echo "2. 省電力モード"
     echo "3. 全性能モード"
-    echo "4. ファンを強制起動"
-    echo "5. ファンを停止"
     echo "0. 現在のクロックを確認"
-}
-
-# 選択処理
-handle_choice() {
-    case $1 in
-        1|2|3|0) set_clocks "$1" ;;
-        4) control_fan "on" ;;
-        5) control_fan "off" ;;
-        *) echo "無効な選択です。再度選択してください。" ;;
-    esac
 }
 
 # メイン処理
@@ -111,8 +82,8 @@ main() {
     setup_config
     while true; do
         show_menu
-        read -p "選択 (0-5): " choice
-        handle_choice "$choice"
+        read -p "選択 (0-3): " choice
+        set_clocks "$choice"
 
         # 再起動確認
         read -p "変更を有効にするために再起動しますか？ (y/n): " reboot_choice
