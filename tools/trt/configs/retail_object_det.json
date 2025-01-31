@@ -1,7 +1,6 @@
 {
     "models": [
       {
-        "name": "retail-object-detection",
         "onnx_path": "/opt/models/retail_object_detection_binary_v2.2.2.3.onnx",
         "engine_path": "/opt/models/retail_object_detection.engine",
         "precision": "fp16",

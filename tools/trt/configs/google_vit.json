@@ -1,7 +1,6 @@
 {
     "models": [
       {
-        "name": "human-action-vit",
         "onnx_path": "/opt/models/human_action_vit.onnx",
         "engine_path": "/opt/models/human_action_vit.engine",
         "precision": "fp16",

@@ -1,7 +1,6 @@
 {
     "models": [
       {
-        "name": "yolov8n",
         "onnx_path": "/opt/models/yolov8n.onnx",
         "engine_path": "/opt/models/yolov8n.engine",
         "precision": "fp16",

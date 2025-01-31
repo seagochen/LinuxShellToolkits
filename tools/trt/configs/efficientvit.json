@@ -1,9 +1,8 @@
 {
     "models": [
       {
-        "name": "human-action-vit",
-        "onnx_path": "/opt/models/efficientvit_l2_r224.onnx",
-        "engine_path": "/opt/models/efficientvit_l2_r224.engine",
+        "onnx_path": "/opt/models/efficientvit_l2_r224_optimized.onnx",
+        "engine_path": "/opt/models/efficientvit_l2_r224_optimized.engine",
         "precision": "fp16",
         "min_shapes": "input:1x3x224x224",
         "opt_shapes": "input:2x3x224x224",
@@ -11,7 +10,7 @@
         "input_tensor_name": "input",
         "input_dimensions": [1, 3, 224, 224],
         "output_tensor_names": "output",
-        "output_dimensions": [1, 15],
+        "output_dimensions": [1, 10],
         "verbose": true
       }
     ]
