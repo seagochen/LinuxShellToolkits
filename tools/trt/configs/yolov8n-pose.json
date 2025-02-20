@@ -3,7 +3,7 @@
       {
         "onnx_path": "/opt/models/yolov8n-pose.onnx",
         "engine_path": "/opt/models/yolov8n-pose.engine",
-        "precision": "fp32",
+        "precision": "fp16",
         "min_shapes": "images:1x3x640x640",
         "opt_shapes": "images:4x3x640x640",
         "max_shapes": "images:8x3x640x640",
