@@ -3,8 +3,17 @@
 # Function to check if required tools are installed
 check_requirements() {
     if ! command -v jq &> /dev/null; then
-        echo "Error: jq is not installed. Please install it using: sudo apt-get install jq"
-        exit 1
+        echo "jq is not installed. Attempting to install..."
+        if command -v apt-get &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y jq
+            if [ $? -ne 0 ]; then
+                echo "Error: Failed to install jq. Please install it manually using: sudo apt-get install jq"
+                exit 1
+            fi
+        else
+            echo "Error: Unable to automatically install jq. Please install it manually."
+            exit 1
+        fi
     fi
 
     if ! command -v trtexec &> /dev/null; then

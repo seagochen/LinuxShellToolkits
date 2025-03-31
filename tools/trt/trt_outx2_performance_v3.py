@@ -1,3 +1,7 @@
+"""
+测试TensorRT模型，单输入 + 双输出的测试脚本
+"""
+
 import tensorrt as trt
 import pycuda.driver as cuda
 import pycuda.autoinit
