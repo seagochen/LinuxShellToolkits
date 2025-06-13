@@ -1,8 +1,8 @@
 #!/bin/bash
 
-set -e  # 遇到错误就停止脚本执行
+set -e  # Stop script execution on error
 
-echo "� 卸载系统已安装的 protobuf..."
+echo "🟢 Uninstalling system-installed protobuf..."
 sudo apt remove --purge -y protobuf-compiler libprotobuf-dev python3-protobuf
 sudo rm -rf /usr/local/bin/protoc
 sudo rm -rf /usr/bin/protoc
@@ -12,39 +12,38 @@ sudo rm -rf /usr/local/lib/libprotobuf*
 sudo rm -rf /usr/lib/python3/dist-packages/google/protobuf
 sudo rm -rf ~/.local/lib/python3.*/site-packages/google/protobuf
 
-echo "� 更新系统..."
+echo "🟢 Updating system..."
 sudo apt update && sudo apt upgrade -y
 
-echo "� 安装编译依赖..."
+echo "🟢 Installing build dependencies..."
 sudo apt install -y cmake g++ make git unzip
 
-echo "� 克隆 protobuf 仓库..."
+echo "🟢 Cloning protobuf repository..."
 cd ~
 rm -rf protobuf
 git clone --depth=1 --branch v3.23.4 https://github.com/protocolbuffers/protobuf.git
 cd protobuf
 
-echo "� 更新 submodules..."
+echo "🟢 Updating submodules..."
 git submodule update --init --recursive
 
-echo "�️ 开始编译 protobuf..."
+echo "🟢 Building protobuf..."
 mkdir -p build
 cd build
 cmake ..
 make -j$(nproc)
 
-echo "� 安装 protobuf..."
+echo "🟢 Installing protobuf..."
 sudo make install
 sudo ldconfig
 
-echo "✅ 验证安装..."
+echo "🟢 Verifying installation..."
 protoc --version
 
-echo "� 安装 Python protobuf..."
+echo "🟢 Installing Python protobuf..."
 pip3 install --no-cache-dir --upgrade protobuf
 
-echo "✅ 验证 Python protobuf 版本..."
+echo "🟢 Verifying Python protobuf version..."
 python3 -c "import google.protobuf; print(google.protobuf.__version__)"
 
-echo "� 安装完成！"
-
+echo "🎉 Installation complete!"
