@@ -66,7 +66,7 @@ sudo make install
 # 更新共享库缓存（尽管 CMake 通常不需要 ldconfig，但保持一致性）
 sudo ldconfig
 
-echo "� 清理临时文件..."
+echo "🟢 清理临时文件..."
 cd "$INSTALL_DIR_BASE" # 返回到临时目录的父目录
 rm -rf cmake-${CMAKE_VERSION}.tar.gz # 删除下载的压缩包
 rm -rf cmake-${CMAKE_VERSION}        # 删除解压后的源代码目录
